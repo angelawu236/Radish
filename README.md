@@ -1,0 +1,1 @@
+Radish is a iOS mobile app for managing and creating recipes. (Building) Features include user login, persistent data storage, webscrapping which transforms a ad-filled recipe website to a simple, clean UI, and categories to manage and add new recipes.
