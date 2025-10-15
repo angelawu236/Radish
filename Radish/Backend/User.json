@@ -1,0 +1,52 @@
+{
+  "id": "user_12345",
+  "username": "radishlover",
+  "following": [
+    "user_67890",
+    "user_54321"
+  ],
+  "followers": [
+    "user_67890"
+  ],
+  "recipes": [
+    {
+      "category": "Dessert",
+      "title": "Matcha Cheesecake",
+      "ingredients": [
+        "200g cream cheese",
+        "100g sugar",
+        "2 eggs",
+        "2 tbsp matcha powder",
+        "1 biscuit crust"
+      ],
+      "directions": [
+        "Preheat oven to 350°F (175°C).",
+        "Mix cream cheese and sugar until smooth.",
+        "Add eggs one at a time, then mix in matcha.",
+        "Pour into crust and bake for 30 minutes.",
+        "Cool before serving."
+      ],
+      "total_time": "45 minutes",
+      "pictures": ["none"]
+    },
+    {
+      "category": "Breakfast",
+      "title": "Avocado Toast",
+      "ingredients": [
+        "1 slice sourdough bread",
+        "1 avocado",
+        "Salt",
+        "Pepper",
+        "Lemon juice"
+      ],
+      "directions": [
+        "Toast the bread.",
+        "Mash the avocado with salt, pepper, and lemon juice.",
+        "Spread over toast and serve."
+      ],
+      "total_time": "10 minutes",
+      "pictures": ["none"]
+    }
+  ]
+}
+

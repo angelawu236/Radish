@@ -12,20 +12,21 @@ struct cardsList: View {
     //when clicked, need to navigate to page of that recipe
     //so what is the data model here? 
     
-    let categoryName : String
+    let userModel: User
     
     var body: some View {
         ScrollView( .horizontal){
-            VStack(spacing: 10) {
-                Text(categoryName)
+            VStack( alignment: .leading, spacing: 10) {
+                Text(userModel.recipes[0].category)
                     .font(Font.custom("Quicksand-Bold", size: 30))
                     .foregroundStyle(Color.titleColor)
+                cards(userModel: userModel)
             }
         }
     }
 }
 
-#Preview {
-    cardsList(categoryName: "Favorites")
-}
+//#Preview {
+//    cardsList(categoryName: "Favorites")
+//}
 

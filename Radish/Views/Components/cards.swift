@@ -6,25 +6,26 @@
 //
 
 import SwiftUI
+//want:
+//loop through all "recipe" fields in User JSON (passed in) to get name and image.
 
 struct cards: View {
-    let imageUrl: String
-    let recipeName: String
+    let userModel: User
     
     var body: some View {
         let recipeNameFont: SwiftUI.Font = .custom("Quicksand", size: 25).weight(.bold)
         VStack(alignment: .leading, spacing: 10){
                 HStack(spacing: 40){
                         ZStack(alignment: .bottomLeading){
-                            AsyncImage(url: URL(string: imageUrl)){ image in
+                            AsyncImage(url: URL(string: userModel.recipes[0].pictures[0])){ image in
                                 image
                                     .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 300)
+                                    .scaledToFill()
+                                    .frame(width: 300, height: 230)
                             }placeholder: {
                                 ProgressView()
                             }
-                            Text(recipeName)
+                            Text(userModel.recipes[0].title)
                                 .font(recipeNameFont)
                                 .foregroundStyle(Color.textColor)
                                 .lineLimit(2)
@@ -49,7 +50,7 @@ struct cards: View {
 
 struct cards_Previews: PreviewProvider {
     static var previews: some View {
-        cards(imageUrl: "https://www.allrecipes.com/thmb/Z6yyEzdwZMg4RErga_vsbaw65HU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc()/83549-angelas-awesome-enchiladas-ddmfs-4x3-0894-dd127d7b2112467cbfc3f1a83c9beab3.jpg",
-              recipeName: "Angela's Enchiladas")
+        let user = decode("User");
+        cards(userModel: user)
     }
 }
