@@ -12,19 +12,38 @@ import SwiftUI
 struct cards: View {
     let userModel: User
     
+    
     var body: some View {
+       
         let recipeNameFont: SwiftUI.Font = .custom("Quicksand", size: 25).weight(.bold)
         VStack(alignment: .leading, spacing: 10){
                 HStack(spacing: 40){
                         ZStack(alignment: .bottomLeading){
-                            AsyncImage(url: URL(string: userModel.recipes[0].pictures[0])){ image in
-                                image
-                                    .resizable()
-                                    .scaledToFill()
+
+                            AsyncImage(url: URL(string: userModel.recipes[0].pictures[0])) { phase in
+                                switch phase {
+                                case .empty:
+                                    ProgressView()
+                                        .frame(width: 300, height: 230)
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 300, height: 230)
+                                        .clipped()
+                                case .failure:
+                                    ZStack {
+                                        Color.gray.opacity(0.15)
+                                        Image(systemName: "photo")
+                                            .imageScale(.large)
+                                            .foregroundStyle(.secondary)
+                                    }
                                     .frame(width: 300, height: 230)
-                            }placeholder: {
-                                ProgressView()
+                                @unknown default:
+                                    Color.clear.frame(width: 300, height: 230)
+                                }
                             }
+
                             Text(userModel.recipes[0].title)
                                 .font(recipeNameFont)
                                 .foregroundStyle(Color.textColor)
@@ -33,6 +52,10 @@ struct cards: View {
                                 .padding(10)
                                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 10))
                                 
+                        }
+                        .onAppear(){
+                            print(userModel.recipes[0].pictures[0])
+
                         }
                             .overlay(
                                 RoundedRectangle(cornerRadius: 15)
